@@ -467,7 +467,10 @@ init_reload (void)
 
   while (memory_address_p (QImode, tem))
     {
-      spill_indirect_levels++;
+      if (spill_indirect_levels == false)
+	{
+	  spill_indirect_levels = true;
+	}
       tem = gen_rtx_MEM (Pmode, tem);
     }
 
